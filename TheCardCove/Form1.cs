@@ -14,11 +14,22 @@ namespace TheCardCove
     {
 
         Graphics g; //declare a graphics object called g
-        Cards card = new Cards(); //create the object, planet1
+                                  // declare space for an array of 7 objects called Cards 
+        Cards[] card = new Cards[7];
+
+        Random yspeed = new Random();
+
 
         public Form1()
         {
             InitializeComponent();
+
+            for (int i = 0; i < 7; i++)
+            {
+                int x = 10 + (i * 75);
+                card[i] = new Cards(x);
+            }
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -35,8 +46,36 @@ namespace TheCardCove
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-            //call the Planet class&#39;s DrawPlanet method to draw the image cards
-            card.DrawCards(g);
+            //call the Card class' Drawcard method to draw the image cards
+            for (int i = 0; i < 7; i++)
+            {
+
+                // generate a random number from 5 to 20 and put it in rndmspeed
+                int rndmspeed = yspeed.Next(5, 20);
+                card[i].y += rndmspeed;
+
+
+                //call the  class's draw method to draw the images
+                card[i].DrawCards(g);
+            }
+
+        }
+
+        private void tmrCards_Tick(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                card[i].MoveCards();
+
+                //if a planet reaches the bottom of the Game Area reposition it at the top
+                if (card[i].y >= panel1.Height)
+                {
+                    card[i].y = 30;
+                }
+
+
+            }
+            panel1.Invalidate();//makes the paint event fire to redraw the panel
         }
     }
 }

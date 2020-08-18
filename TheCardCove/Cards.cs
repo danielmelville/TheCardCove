@@ -16,9 +16,11 @@ namespace TheCardCove
         public Rectangle CardsRec;//variable for a rectangle to place our image in
         public int score;
         //Create a constructor (initialises the values of the fields)
-        public Cards()
+        //Create a constructor (initialises the values of the fields)
+        public Cards(int spacing)
         {
-            x = 10;
+            x = spacing;
+
             y = 10;
             width = 20;
             height = 20;
@@ -31,7 +33,15 @@ namespace TheCardCove
         // Methods for the Cards class
         public void DrawCards(Graphics g)
         {
+            CardsRec = new Rectangle(x, y, width, height);
             g.DrawImage(card, CardsRec);
+        }
+
+        public void MoveCards()
+        {
+         
+
+            CardsRec.Location = new Point(x, y);
         }
     }
 }
