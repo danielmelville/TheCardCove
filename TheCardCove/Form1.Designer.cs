@@ -36,6 +36,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tmrCards = new System.Windows.Forms.Timer(this.components);
             this.TmrKing = new System.Windows.Forms.Timer(this.components);
+            this.lblScore = new System.Windows.Forms.Label();
+            this.lblLives = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel1
@@ -96,8 +98,27 @@
             // 
             // TmrKing
             // 
+            this.TmrKing.Enabled = true;
             this.TmrKing.Interval = 50;
             this.TmrKing.Tick += new System.EventHandler(this.TmrKing_Tick);
+            // 
+            // lblScore
+            // 
+            this.lblScore.AutoSize = true;
+            this.lblScore.Location = new System.Drawing.Point(813, 211);
+            this.lblScore.Name = "lblScore";
+            this.lblScore.Size = new System.Drawing.Size(13, 13);
+            this.lblScore.TabIndex = 4;
+            this.lblScore.Text = "0";
+            // 
+            // lblLives
+            // 
+            this.lblLives.AutoSize = true;
+            this.lblLives.Location = new System.Drawing.Point(813, 134);
+            this.lblLives.Name = "lblLives";
+            this.lblLives.Size = new System.Drawing.Size(13, 13);
+            this.lblLives.TabIndex = 5;
+            this.lblLives.Text = "5";
             // 
             // Form1
             // 
@@ -105,6 +126,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
             this.ClientSize = new System.Drawing.Size(875, 461);
+            this.Controls.Add(this.lblLives);
+            this.Controls.Add(this.lblScore);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -130,6 +153,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer tmrCards;
         private System.Windows.Forms.Timer TmrKing;
+        private System.Windows.Forms.Label lblScore;
+        private System.Windows.Forms.Label lblLives;
     }
 }
 

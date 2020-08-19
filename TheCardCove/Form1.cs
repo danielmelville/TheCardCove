@@ -21,6 +21,7 @@ namespace TheCardCove
         King king = new King();
         bool left, right;
         string move;
+        int score;
 
 
         public Form1()
@@ -73,6 +74,8 @@ namespace TheCardCove
                 //if a planet reaches the bottom of the Game Area reposition it at the top
                 if (card[i].y >= panel1.Height)
                 {
+                    score += 1;//update the score
+                    lblScore.Text = score.ToString();// display score
                     card[i].y = 30;
                 }
 
