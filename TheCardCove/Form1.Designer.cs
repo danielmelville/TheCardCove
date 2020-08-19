@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tmrCards = new System.Windows.Forms.Timer(this.components);
+            this.TmrKing = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // panel1
@@ -93,6 +94,11 @@
             this.tmrCards.Enabled = true;
             this.tmrCards.Tick += new System.EventHandler(this.tmrCards_Tick);
             // 
+            // TmrKing
+            // 
+            this.TmrKing.Interval = 50;
+            this.TmrKing.Tick += new System.EventHandler(this.TmrKing_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -104,8 +110,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +129,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer tmrCards;
+        private System.Windows.Forms.Timer TmrKing;
     }
 }
 

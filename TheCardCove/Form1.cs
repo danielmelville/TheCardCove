@@ -19,6 +19,8 @@ namespace TheCardCove
 
         Random yspeed = new Random();
         King king = new King();
+        bool left, right;
+        string move;
 
 
         public Form1()
@@ -77,6 +79,40 @@ namespace TheCardCove
 
             }
             panel1.Invalidate();//makes the paint event fire to redraw the panel
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = true; }
+            if (e.KeyData == Keys.Right) { right = true; }
+
+        }
+
+        private void Form1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Left) { left = false; }
+            if (e.KeyData == Keys.Right) { right = false; }
+
+        }
+
+        private void TmrKing_Tick(object sender, EventArgs e)
+        {
+            if (right) // if right arrow key pressed
+            {
+                move = "right";
+                king.MoveKing(move);
+            }
+            if (left) // if left arrow key pressed
+            {
+                move = "left";
+                king.MoveKing(move);
+            }
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
