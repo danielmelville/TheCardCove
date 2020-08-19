@@ -18,6 +18,7 @@ namespace TheCardCove
         Cards[] card = new Cards[7];
 
         Random yspeed = new Random();
+        King king = new King();
 
 
         public Form1()
@@ -58,7 +59,7 @@ namespace TheCardCove
                 //call the  class's draw method to draw the images
                 card[i].DrawCards(g);
             }
-
+            king.DrawKing(g);
         }
 
         private void tmrCards_Tick(object sender, EventArgs e)
