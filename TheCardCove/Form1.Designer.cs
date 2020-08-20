@@ -35,9 +35,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tmrCards = new System.Windows.Forms.Timer(this.components);
-            this.TmrKing = new System.Windows.Forms.Timer(this.components);
+            this.tmrKing = new System.Windows.Forms.Timer(this.components);
             this.lblScore = new System.Windows.Forms.Label();
             this.lblLives = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,8 +56,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Stencil Std", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(201, 12);
+            this.label1.Location = new System.Drawing.Point(199, 12);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(428, 63);
             this.label1.TabIndex = 1;
@@ -96,11 +101,11 @@
             this.tmrCards.Enabled = true;
             this.tmrCards.Tick += new System.EventHandler(this.tmrCards_Tick);
             // 
-            // TmrKing
+            // tmrKing
             // 
-            this.TmrKing.Enabled = true;
-            this.TmrKing.Interval = 50;
-            this.TmrKing.Tick += new System.EventHandler(this.TmrKing_Tick);
+            this.tmrKing.Enabled = true;
+            this.tmrKing.Interval = 50;
+            this.tmrKing.Tick += new System.EventHandler(this.TmrKing_Tick);
             // 
             // lblScore
             // 
@@ -120,6 +125,31 @@
             this.lblLives.TabIndex = 5;
             this.lblLives.Text = "5";
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuStart,
+            this.mnuStop});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(875, 24);
+            this.menuStrip1.TabIndex = 8;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // mnuStart
+            // 
+            this.mnuStart.Name = "mnuStart";
+            this.mnuStart.Size = new System.Drawing.Size(43, 20);
+            this.mnuStart.Text = "Start";
+            this.mnuStart.Click += new System.EventHandler(this.mnuStart_Click);
+            // 
+            // mnuStop
+            // 
+            this.mnuStop.Name = "mnuStop";
+            this.mnuStop.Size = new System.Drawing.Size(43, 20);
+            this.mnuStop.Text = "Stop";
+            this.mnuStop.Click += new System.EventHandler(this.mnuStop_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -133,12 +163,16 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.menuStrip1);
             this.KeyPreview = true;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,9 +186,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer tmrCards;
-        private System.Windows.Forms.Timer TmrKing;
+        private System.Windows.Forms.Timer tmrKing;
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblLives;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuStart;
+        private System.Windows.Forms.ToolStripMenuItem mnuStop;
     }
 }
 

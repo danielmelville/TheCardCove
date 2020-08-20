@@ -22,6 +22,7 @@ namespace TheCardCove
         bool left, right;
         string move;
         int score;
+        int lives;
 
 
         public Form1()
@@ -35,6 +36,7 @@ namespace TheCardCove
             }
 
         }
+
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -65,11 +67,36 @@ namespace TheCardCove
             king.DrawKing(g);
         }
 
+        private void TmrKing_Tick(object sender, EventArgs e)
+        {
+            if (right) // if right arrow key pressed
+            {
+                move = "right";
+                king.MoveKing(move);
+            }
+            if (left) // if left arrow key pressed
+            {
+                move = "left";
+                king.MoveKing(move);
+            }
+
+        }
+
         private void tmrCards_Tick(object sender, EventArgs e)
         {
             for (int i = 0; i < 7; i++)
             {
                 card[i].MoveCards();
+
+                if (king.spaceRec.IntersectsWith(card[i].CardsRec))
+                {
+                    //reset planet[i] back to top of panel
+                    card[i].y = 30; // set  y value of planetRec
+                    lives -= 1;// lose a life
+                    lblLives.Text = lives.ToString();// display number of lives
+                    Checklives();
+                }
+
 
                 //if a planet reaches the bottom of the Game Area reposition it at the top
                 if (card[i].y >= panel1.Height)
@@ -98,24 +125,46 @@ namespace TheCardCove
 
         }
 
-        private void TmrKing_Tick(object sender, EventArgs e)
+        private void Checklives()
         {
-            if (right) // if right arrow key pressed
-            {
-                move = "right";
-                king.MoveKing(move);
-            }
-            if (left) // if left arrow key pressed
-            {
-                move = "left";
-                king.MoveKing(move);
-            }
 
+            if (lives == 0)
+            {
+                tmrCards.Enabled = false; //disable tmrCards
+                tmrKing.Enabled = false; //disable tmrKing
+                MessageBox.Show("Game Over");
+            }
+        }
+
+      
+
+      
+
+        private void mnuStart_Click(object sender, EventArgs e)
+        {
+            score = 0; //set score to 0
+            lblScore.Text = score.ToString();
+            lives = int.Parse(lblLives.Text);// pass lives entered from textbox to lives variable
+            tmrCards.Enabled = true; //enable tmrCards
+            tmrKing.Enabled = true; //enable tmrKing
+        }
+
+        private void mnuStop_Click(object sender, EventArgs e)
+        {
+            tmrCards.Enabled = false; //disable tmrCards
+            tmrKing.Enabled = false; //disable tmrKing
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            MessageBox.Show("instructions display here");
+     //       txtName.Focus();
 
+            tmrCards.Enabled = false; //disable tmrCards
+            tmrKing.Enabled = false; //disable tmrKing
         }
+
+
+
     }
 }

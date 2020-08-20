@@ -15,8 +15,7 @@ namespace TheCardCove
         public Image card;//variable for the card's image
         public Rectangle CardsRec;//variable for a rectangle to place our image in
         public int score;
-        //Create a constructor (initialises the values of the fields)
-        //Create a constructor (initialises the values of the fields)
+        //Create a constructor (initialises the values of the fields))
         public Cards(int spacing)
         {
             x = spacing;
