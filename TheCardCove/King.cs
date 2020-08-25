@@ -40,10 +40,10 @@ namespace TheCardCove
 
             if (move == "right")
             {
-                if (spaceRec.Location.X > 450) // is spaceship within 50 of right side
+                if (spaceRec.Location.X > 650) // is spaceship within 50 of right side
                 {
 
-                    x = 450;
+                    x = 650;
                     spaceRec.Location = new Point(x, y);
                 }
                 else
@@ -71,6 +71,54 @@ namespace TheCardCove
 
             }
 
+            if (move == "right")
+            {
+                if (spaceRec.Location.X > 650) // is spaceship within 50 of right side
+                {
+
+                    x = 650;
+                    spaceRec.Location = new Point(x, y);
+                }
+                else
+                {
+                    x += 5;
+                    spaceRec.Location = new Point(x, y);
+                }
+
+            }
+            if (move == "up")
+                 {
+                if (spaceRec.Location.Y < 10) // is spaceship within 10 of top
+                {
+
+                    y = 10;
+                    spaceRec.Location = new Point(x, y);
+                }
+                else
+                {
+                    y -= 5;
+                    spaceRec.Location = new Point(x, y);
+                }
+
+                }
+
+                if (move == "down")
+                {
+                    if (spaceRec.Location.Y > 300)
+                    {
+
+                        y = 300;
+                        spaceRec.Location = new Point(x, y);
+                    }
+                    else
+                    {
+                        y += 5;
+                        spaceRec.Location = new Point(x, y);
+                    }
+
+                }
+
+          
         }
     }
 }

@@ -22,7 +22,7 @@ namespace TheCardCove
         Random yspeed = new Random();
         Random xspeed = new Random();
         King king = new King();
-        bool left, right;
+        bool left, right, up, down;
         string move;
         int score;
         int lives;
@@ -125,6 +125,16 @@ namespace TheCardCove
                 move = "left";
                 king.MoveKing(move);
             }
+            if (up)
+            {
+                move = "up";
+                king.MoveKing(move);
+            }
+            if (down) // if left arrow key pressed
+            {
+                move = "down";
+                king.MoveKing(move);
+            }
 
         }
 
@@ -179,14 +189,16 @@ namespace TheCardCove
         {
             if (e.KeyData == Keys.Left) { left = true; }
             if (e.KeyData == Keys.Right) { right = true; }
-
+            if (e.KeyData == Keys.Up) { up = true; }
+            if (e.KeyData == Keys.Down) { down = true; }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Left) { left = false; }
             if (e.KeyData == Keys.Right) { right = false; }
-
+            if (e.KeyData == Keys.Up) { up = false; }
+            if (e.KeyData == Keys.Down) { down = false; }
         }
 
         private void Checklives()
