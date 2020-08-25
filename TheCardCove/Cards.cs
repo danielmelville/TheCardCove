@@ -5,6 +5,7 @@ using System.Text;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Media;
+using System.Reflection;
 
 namespace TheCardCove
 {
@@ -13,14 +14,17 @@ namespace TheCardCove
         // declare fields to use in the class
         public int x, y, width, height;//variables for the cards
         public Image card;//variable for the card's image
+        public int xSpeed, ySpeed;
         public Rectangle CardsRec;//variable for a rectangle to place our image in
         public int score;
         //Create a constructor (initialises the values of the fields))
-        public Cards(int spacing)
+        public Cards(int startx, int starty, int xspd, int yspd)
         {
-            x = spacing;
 
-            y = 10;
+            xSpeed = xspd; //set the "x" speeds to equal
+            ySpeed = yspd; //set the "y" speeds to equal
+            x = startx; //set the "x" postition to equal
+            y = starty; //set the "x" postition to equal
             width = 20;
             height = 20;
 
@@ -37,9 +41,7 @@ namespace TheCardCove
         }
 
         public void MoveCards()
-        {
-         
-
+        {  
             CardsRec.Location = new Point(x, y);
         }
     }

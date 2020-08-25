@@ -63,7 +63,6 @@
             this.label1.Size = new System.Drawing.Size(428, 63);
             this.label1.TabIndex = 1;
             this.label1.Text = "The Card Cove";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -74,7 +73,6 @@
             this.label2.Size = new System.Drawing.Size(47, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Lives";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -99,6 +97,7 @@
             // tmrCards
             // 
             this.tmrCards.Enabled = true;
+            this.tmrCards.Interval = 10;
             this.tmrCards.Tick += new System.EventHandler(this.tmrCards_Tick);
             // 
             // tmrKing
@@ -164,6 +163,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
+            this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
