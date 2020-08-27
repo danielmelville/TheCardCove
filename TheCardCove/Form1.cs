@@ -21,6 +21,7 @@ namespace TheCardCove
 
         Random yspeed = new Random();
         Random xspeed = new Random();
+        List<Dice> dice = new List<Dice>();
         King king = new King();
         bool left, right, up, down;
         string move;
@@ -66,6 +67,13 @@ namespace TheCardCove
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
+
+            foreach (Dice m in dice)
+            {
+                m.draw(g);
+                m.moveMissile(g);
+            }
+
             //call the Card class' Drawcard method to draw the image cards
             for (int i = 0; i < 4; i++) //where "i" is from 0 to 4
             {
@@ -141,20 +149,54 @@ namespace TheCardCove
 
         private void tmrCards_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 4; i++)
             {
-                // card[i].MoveCards();
+                if (king.spaceRec.IntersectsWith(card[i].CardsRec))
+                {
+                    card[i].y = 25;
+                    lives -= 1;// lose a life
+                    lblLives.Text = lives.ToString();// display number of lives
+                    Checklives();
+                }
+            }
 
-                //if (king.spaceRec.IntersectsWith(card[i].CardsRec))
-                //{
-                //    Reset_Card();
-                //    lives -= 1;// lose a life
-                //    lblLives.Text = lives.ToString();// display number of lives
-                //    Checklives();
-                //}
+            for (int i = 5; i < 8; i++)
+            {
+                if (king.spaceRec.IntersectsWith(card[i].CardsRec))
+                {
+                    card[i].y = panel1.Height - 25;
+                    lives -= 1;// lose a life
+                    lblLives.Text = lives.ToString();// display number of lives
+                    Checklives();
+                }
+            }
+
+            for (int i = 9; i < 12; i++)
+            {
+                if (king.spaceRec.IntersectsWith(card[i].CardsRec))
+                {
+                    card[i].x = 25;
+                    lives -= 1;// lose a life
+                    lblLives.Text = lives.ToString();// display number of lives
+                    Checklives();
+                }
+            }
+
+            for (int i = 13; i < 16; i++)
+            {
+                if (king.spaceRec.IntersectsWith(card[i].CardsRec))
+                {
+                    card[i].x = panel1.Width - 25;
+                    lives -= 1;// lose a life
+                    lblLives.Text = lives.ToString();// display number of lives
+                    Checklives();
+                }
+            }
 
 
-                //if a card reaches the bottom of the Game Area reposition it at the top
+            for (int i = 0; i < 16; i++)
+
+            {
                 if (card[i].y >= panel1.Height)
                 {
                     card[i].y = 25;
@@ -172,14 +214,7 @@ namespace TheCardCove
                     card[i].x = panel1.Width - 25;
                 }
 
-                //    score += 1;//update the score
-                //    lblScore.Text = score.ToString();// display score
-
             }
-
-
-
-
 
             panel1.Invalidate();//makes the paint event fire to redraw the panel
         }
@@ -191,6 +226,10 @@ namespace TheCardCove
             if (e.KeyData == Keys.Right) { right = true; }
             if (e.KeyData == Keys.Up) { up = true; }
             if (e.KeyData == Keys.Down) { down = true; }
+            if (e.KeyData == Keys.Space)
+            {
+                dice.Add(new Dice(king.spaceRec, king.angle));
+            }
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
@@ -209,12 +248,10 @@ namespace TheCardCove
                 tmrCards.Enabled = false; //disable tmrCards
                 tmrKing.Enabled = false; //disable tmrKing
                 MessageBox.Show("Game Over");
+                lives = 5; //set lives back to 5
+                lblLives.Text = lives.ToString();
             }
         }
-
-
-
-
 
         private void mnuStart_Click(object sender, EventArgs e)
         {
