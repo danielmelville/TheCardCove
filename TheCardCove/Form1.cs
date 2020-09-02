@@ -26,7 +26,6 @@ namespace TheCardCove
         bool left, right, up, down;
         string move;
         int score;
-        int lives;
 
 
         public Form1()
@@ -154,9 +153,9 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].y = 25;
-                    lives -= 1;// lose a life
-                    lblLives.Text = lives.ToString();// display number of lives
-                    Checklives();
+                    score -= 1;// lose a point
+                    lblScore.Text = score.ToString();// display score
+                    Checkpoints();
                 }
             }
 
@@ -165,9 +164,9 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].y = panel1.Height - 25;
-                    lives -= 1;// lose a life
-                    lblLives.Text = lives.ToString();// display number of lives
-                    Checklives();
+                    score -= 1;// lose a point
+                    lblScore.Text = score.ToString();// display score
+                    Checkpoints();
                 }
             }
 
@@ -176,9 +175,9 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].x = 25;
-                    lives -= 1;// lose a life
-                    lblLives.Text = lives.ToString();// display number of lives
-                    Checklives();
+                    score -= 1;// lose a point
+                    lblScore.Text = score.ToString();// display score
+                    Checkpoints();
                 }
             }
 
@@ -187,9 +186,9 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].x = panel1.Width - 25;
-                    lives -= 1;// lose a life
-                    lblLives.Text = lives.ToString();// display number of lives
-                    Checklives();
+                    score -= 1;// lose a point
+                    lblScore.Text = score.ToString();// display score
+                    Checkpoints();
                 }
             }
 
@@ -200,18 +199,26 @@ namespace TheCardCove
                 if (card[i].y >= panel1.Height)
                 {
                     card[i].y = 25;
+                    score += 1;
+                    lblScore.Text = score.ToString(); // display number of points
                 }
                 if (card[i].y <= 0)
                 {
                     card[i].y = panel1.Height - 25;
+                    score += 1;
+                    lblScore.Text = score.ToString(); // display number of points
                 }
                 if (card[i].x >= panel1.Width)
                 {
                     card[i].x = 25;
+                    score += 1;
+                    lblScore.Text = score.ToString(); // display number of points
                 }
                 if (card[i].x <= 0)
                 {
                     card[i].x = panel1.Width - 25;
+                    score += 1;
+                    lblScore.Text = score.ToString(); // display number of points
                 }
 
             }
@@ -240,16 +247,16 @@ namespace TheCardCove
             if (e.KeyData == Keys.Down) { down = false; }
         }
 
-        private void Checklives()
+        private void Checkpoints()
         {
 
-            if (lives == 0)
+            if (score <= 0)
             {
                 tmrCards.Enabled = false; //disable tmrCards
                 tmrKing.Enabled = false; //disable tmrKing
                 MessageBox.Show("Game Over");
-                lives = 5; //set lives back to 5
-                lblLives.Text = lives.ToString();
+                score = 0; //set score to 0
+                lblScore.Text = score.ToString();
             }
         }
 
@@ -257,7 +264,7 @@ namespace TheCardCove
         {
             score = 0; //set score to 0
             lblScore.Text = score.ToString();
-            lives = int.Parse(lblLives.Text);// pass lives entered from textbox to lives variable
+            score = int.Parse(lblScore.Text);// pass score entered from textbox to score variable
             tmrCards.Enabled = true; //enable tmrCards
             tmrKing.Enabled = true; //enable tmrKing
         }

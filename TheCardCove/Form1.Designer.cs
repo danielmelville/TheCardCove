@@ -31,13 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tmrCards = new System.Windows.Forms.Timer(this.components);
             this.tmrKing = new System.Windows.Forms.Timer(this.components);
             this.lblScore = new System.Windows.Forms.Label();
-            this.lblLives = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuStart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuStop = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,21 +62,11 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "The Card Cove";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Poplar Std", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(793, 92);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Lives";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Poplar Std", 15.75F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(790, 170);
+            this.label3.Location = new System.Drawing.Point(788, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 25);
             this.label3.TabIndex = 2;
@@ -109,20 +97,11 @@
             // lblScore
             // 
             this.lblScore.AutoSize = true;
-            this.lblScore.Location = new System.Drawing.Point(813, 211);
+            this.lblScore.Location = new System.Drawing.Point(809, 140);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(13, 13);
             this.lblScore.TabIndex = 4;
             this.lblScore.Text = "0";
-            // 
-            // lblLives
-            // 
-            this.lblLives.AutoSize = true;
-            this.lblLives.Location = new System.Drawing.Point(813, 134);
-            this.lblLives.Name = "lblLives";
-            this.lblLives.Size = new System.Drawing.Size(13, 13);
-            this.lblLives.TabIndex = 5;
-            this.lblLives.Text = "5";
             // 
             // menuStrip1
             // 
@@ -154,12 +133,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(875, 461);
-            this.Controls.Add(this.lblLives);
+            this.ClientSize = new System.Drawing.Size(875, 486);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
@@ -171,7 +148,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -183,13 +159,11 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Timer tmrCards;
         private System.Windows.Forms.Timer tmrKing;
         private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label lblLives;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem mnuStart;
         private System.Windows.Forms.ToolStripMenuItem mnuStop;
