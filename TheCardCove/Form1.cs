@@ -26,6 +26,7 @@ namespace TheCardCove
         bool left, right, up, down;
         string move;
         int score;
+        int progress;
 
 
         public Form1()
@@ -66,12 +67,7 @@ namespace TheCardCove
         {
             //get the graphics used to paint on the panel control
             g = e.Graphics;
-
-            foreach (Dice m in dice)
-            {
-                m.draw(g);
-                m.moveMissile(g);
-            }
+ 
 
             //call the Card class' Drawcard method to draw the image cards
             for (int i = 0; i < 4; i++) //where "i" is from 0 to 4
@@ -81,7 +77,7 @@ namespace TheCardCove
                 card[i].DrawCards(g);
 
                 // generate a random number from 1 to 3 and put it in rndmspeed
-                int rndmspeed = ((score / 5000) + 2) * yspeed.Next(1, 3); //make the average speed of thr cards increase as the score increases
+                int rndmspeed = ((progress / 500) + 1) * yspeed.Next(1, 3); //make the average speed of the cards increase as the score increases
                 card[i].y += rndmspeed * card[i].ySpeed; //assign the speed to the cards
 
             }
@@ -92,7 +88,7 @@ namespace TheCardCove
                 card[i].DrawCards(g);
 
                 // generate a random number from 1 to 3 and put it in rndmspeed
-                int rndmspeed = ((score / 5000) + 2) * yspeed.Next(1, 3); //make the speed of thr cards increase as the score increases
+                int rndmspeed = ((progress / 500) + 1) * yspeed.Next(1, 3); //make the average speed of the cards increase as the score increases
                 card[i].y -= rndmspeed * card[i].ySpeed; //assign the speed to the cards
             }
             for (int i = 8; i < 12; i++) //where "i" is from 0 to 8
@@ -102,7 +98,7 @@ namespace TheCardCove
                 card[i].DrawCards(g);
 
                 // generate a random number from 1 to 3 and put it in rndmspeed
-                int rndmspeed = ((score / 5000) + 2) * xspeed.Next(1, 3); //make the speed of thr cards increase as the score increases
+                int rndmspeed = ((progress / 500) + 1) * yspeed.Next(1, 3); //make the average speed of the cards increase as the score increases
                 card[i].x += rndmspeed * card[i].xSpeed; //assign the speed to the cards
             }
             for (int i = 12; i < 16; i++) //where "i" is from 0 to 8
@@ -112,7 +108,7 @@ namespace TheCardCove
                 card[i].DrawCards(g);
 
                 // generate a random number from 1 to 3 and put it in rndmspeed
-                int rndmspeed = ((score / 5000) + 2) * yspeed.Next(1, 3); //make the speed of thr cards increase as the score increases
+                int rndmspeed = ((progress / 500) + 1) * yspeed.Next(1, 3); //make the average speed of the cards increase as the score increases
                 card[i].x -= rndmspeed * card[i].xSpeed; //assign the speed to the cards
             }
             king.DrawKing(g);
@@ -254,25 +250,41 @@ namespace TheCardCove
             {
                 tmrCards.Enabled = false; //disable tmrCards
                 tmrKing.Enabled = false; //disable tmrKing
-                MessageBox.Show("Game Over");
+                tmrProgress.Enabled = false; //disable tmrProgress
+                MessageBox.Show("Game Over, you lasted "+progress+" seconds!");
                 score = 0; //set score to 0
                 lblScore.Text = score.ToString();
             }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmrProgress_Tick(object sender, EventArgs e)
+        {
+            progress += 1;
+            lblProgress.Text = progress.ToString();
         }
 
         private void mnuStart_Click(object sender, EventArgs e)
         {
             score = 0; //set score to 0
             lblScore.Text = score.ToString();
+            progress = 0;
+            lblProgress.Text = progress.ToString();
             score = int.Parse(lblScore.Text);// pass score entered from textbox to score variable
             tmrCards.Enabled = true; //enable tmrCards
             tmrKing.Enabled = true; //enable tmrKing
+            tmrProgress.Enabled = true; //enable tmrProgress
         }
 
         private void mnuStop_Click(object sender, EventArgs e)
         {
             tmrCards.Enabled = false; //disable tmrCards
             tmrKing.Enabled = false; //disable tmrKing
+            tmrProgress.Enabled = true; //enable tmrProgress
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -282,6 +294,7 @@ namespace TheCardCove
 
             tmrCards.Enabled = false; //disable tmrCards
             tmrKing.Enabled = false; //disable tmrKing
+            tmrProgress.Enabled = false; //disabe tmrProgress
         }
 
 
