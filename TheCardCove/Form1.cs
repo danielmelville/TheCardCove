@@ -149,7 +149,7 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].y = 25;
-                    score -= 1;// lose a point
+                    score -= ((progress / 5) + 1);// lose a point
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
@@ -160,7 +160,7 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].y = panel1.Height - 25;
-                    score -= 1;// lose a point
+                    score -= ((progress / 5) + 1);// lose a point
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
@@ -171,7 +171,7 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].x = 25;
-                    score -= 1;// lose a point
+                    score -= ((progress/5) + 1);// lose a point/s
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
@@ -182,7 +182,7 @@ namespace TheCardCove
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
                     card[i].x = panel1.Width - 25;
-                    score -= 1;// lose a point
+                    score -= ((progress / 5) + 1);// lose a point
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
@@ -266,6 +266,7 @@ namespace TheCardCove
         {
             progress += 1;
             lblProgress.Text = progress.ToString();
+            lblLiveLoss.Text = ((progress / 5) + 1).ToString();
         }
 
         private void mnuStart_Click(object sender, EventArgs e)
@@ -280,11 +281,11 @@ namespace TheCardCove
             tmrProgress.Enabled = true; //enable tmrProgress
         }
 
-        private void mnuStop_Click(object sender, EventArgs e)
+        private void mnuPause_Click_1(object sender, EventArgs e)
         {
             tmrCards.Enabled = false; //disable tmrCards
             tmrKing.Enabled = false; //disable tmrKing
-            tmrProgress.Enabled = true; //enable tmrProgress
+            tmrProgress.Enabled = false; //enable tmrProgress
         }
 
         private void Form1_Load(object sender, EventArgs e)
