@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Drawing.Text;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,92 @@ namespace TheCardCove
         string move;
         int score;
         int progress;
+        string binPath = Application.StartupPath + @"\highscores.txt";
+        List<Highscores> highScores = new List<Highscores>();
 
+
+        public void DisplayHighScores()
+        {
+            foreach (Highscores s in highScores)
+            {
+                lstBoxName.Items.Add(s.Name);
+                lstBoxScore.Items.Add(s.Score);
+
+            }
+        }
+
+        private void ReadScores()
+        {
+            //  lblPlayerName.Text = playerName;
+            // lblPlayerScore.Text = playerScore;
+
+            var reader = new StreamReader(binPath);
+            // While the reader still has something to read, this code will execute.
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                // Split into the name and the score.
+                var values = line.Split(',');
+                highScores.Add(new Highscores(values[0], Int32.Parse(values[1])));
+            }
+            reader.Close();
+        }
+
+
+        public void SortHighScores()
+        {
+            highScores = highScores.OrderByDescending(hs => hs.Score).Take(10).ToList();
+        }
+
+        public void SaveHighScores()
+        {
+            StringBuilder builder = new StringBuilder();
+            foreach (Highscores score in highScores)
+            {
+                //{0} is for the Name, {1} is for the Score and {2} is for a new line
+                builder.Append(string.Format("{0},{1}{2}", score.Name, score.Score, Environment.NewLine));
+            }
+            File.WriteAllText(binPath, builder.ToString());
+            //Clear current lists
+            lstBoxName.Items.Clear();
+            lstBoxScore.Items.Clear();
+            // ReadScores();
+            // SortHighScores();
+            DisplayHighScores();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            SortHighScores();
+            SaveHighScores();
+            //FrmDodge FrmDodge2 = new FrmDodge();
+            //Hide();
+            //FrmDodge2.ShowDialog();
+        }
+
+        private void BtnCheck_Click(object sender, EventArgs e)
+        {
+            //FrmDodge FrmDodge2 = new FrmDodge();
+            //Hide();
+            //FrmDodge2.ShowDialog();
+            lblPlayerName.Text = Name.Text;
+            lblPlayerScore.Text = lblScore.Text;
+            int lowest_score = highScores[(highScores.Count - 1)].Score;
+
+            if (int.Parse(lblScore.Text) > lowest_score)
+            {
+                lblMessage.Text = "You have made the Top Ten! Well Done!";
+                highScores.Add(new Highscores(lblPlayerName.Text, int.Parse(lblScore.Text)));
+            }
+            else
+            {
+                lblMessage.Text = "Keep trying to make the top ten!";
+            }
+            SortHighScores();
+            lstBoxName.Items.Clear();
+            lstBoxScore.Items.Clear();
+            DisplayHighScores();
+        }
 
         public Form1()
         {
@@ -296,6 +382,9 @@ namespace TheCardCove
             tmrCards.Enabled = false; //disable tmrCards
             tmrKing.Enabled = false; //disable tmrKing
             tmrProgress.Enabled = false; //disabe tmrProgress
+
+            SortHighScores();
+            DisplayHighScores();
         }
 
 

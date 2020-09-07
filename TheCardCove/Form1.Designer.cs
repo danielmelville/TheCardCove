@@ -40,7 +40,7 @@
             this.mnuStart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPause = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Name = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,6 +51,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lstBoxName = new System.Windows.Forms.ListBox();
+            this.lstBoxScore = new System.Windows.Forms.ListBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.BtnCheck = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblPlayerName = new System.Windows.Forms.Label();
+            this.lblPlayerScore = new System.Windows.Forms.Label();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,7 +135,7 @@
             this.mnuPause});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(765, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(795, 24);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -152,14 +163,14 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Name";
             // 
-            // textBox1
+            // Name
             // 
-            this.textBox1.BackColor = System.Drawing.Color.GreenYellow;
-            this.textBox1.Location = new System.Drawing.Point(494, 177);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Name.BackColor = System.Drawing.Color.GreenYellow;
+            this.Name.Location = new System.Drawing.Point(494, 177);
+            this.Name.Name = "Name";
+            this.Name.Size = new System.Drawing.Size(100, 20);
+            this.Name.TabIndex = 10;
+            this.Name.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label5
             // 
@@ -261,12 +272,120 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "!";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(632, 177);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(35, 13);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "Name";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(714, 177);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(35, 13);
+            this.label13.TabIndex = 21;
+            this.label13.Text = "Score";
+            // 
+            // lstBoxName
+            // 
+            this.lstBoxName.FormattingEnabled = true;
+            this.lstBoxName.Location = new System.Drawing.Point(613, 222);
+            this.lstBoxName.Name = "lstBoxName";
+            this.lstBoxName.Size = new System.Drawing.Size(74, 186);
+            this.lstBoxName.TabIndex = 15;
+            // 
+            // lstBoxScore
+            // 
+            this.lstBoxScore.FormattingEnabled = true;
+            this.lstBoxScore.Location = new System.Drawing.Point(693, 222);
+            this.lstBoxScore.Name = "lstBoxScore";
+            this.lstBoxScore.Size = new System.Drawing.Size(74, 186);
+            this.lstBoxScore.TabIndex = 16;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(526, 542);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 22;
+            this.btnSave.Text = "Save scores";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // BtnCheck
+            // 
+            this.BtnCheck.Location = new System.Drawing.Point(512, 500);
+            this.BtnCheck.Name = "BtnCheck";
+            this.BtnCheck.Size = new System.Drawing.Size(75, 23);
+            this.BtnCheck.TabIndex = 23;
+            this.BtnCheck.Text = "Check score";
+            this.BtnCheck.UseVisualStyleBackColor = true;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(613, 458);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(74, 13);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Player\'s Name";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(613, 500);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(74, 13);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "Player\'s Score";
+            // 
+            // lblPlayerName
+            // 
+            this.lblPlayerName.AutoSize = true;
+            this.lblPlayerName.Location = new System.Drawing.Point(705, 458);
+            this.lblPlayerName.Name = "lblPlayerName";
+            this.lblPlayerName.Size = new System.Drawing.Size(35, 13);
+            this.lblPlayerName.TabIndex = 26;
+            this.lblPlayerName.Text = "Name";
+            // 
+            // lblPlayerScore
+            // 
+            this.lblPlayerScore.AutoSize = true;
+            this.lblPlayerScore.Location = new System.Drawing.Point(705, 501);
+            this.lblPlayerScore.Name = "lblPlayerScore";
+            this.lblPlayerScore.Size = new System.Drawing.Size(35, 13);
+            this.lblPlayerScore.TabIndex = 27;
+            this.lblPlayerScore.Text = "Score";
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(657, 552);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(73, 13);
+            this.lblMessage.TabIndex = 28;
+            this.lblMessage.Text = "message here";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Cornsilk;
-            this.ClientSize = new System.Drawing.Size(765, 602);
+            this.ClientSize = new System.Drawing.Size(795, 602);
+            this.Controls.Add(this.lblMessage);
+            this.Controls.Add(this.lblPlayerScore);
+            this.Controls.Add(this.lblPlayerName);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.BtnCheck);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.lstBoxScore);
+            this.Controls.Add(this.lstBoxName);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -276,7 +395,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Name);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.label4);
@@ -287,7 +406,7 @@
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+//            this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
@@ -312,7 +431,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuStart;
         private System.Windows.Forms.ToolStripMenuItem mnuPause;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Name;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -323,6 +442,17 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.ListBox lstBoxName;
+        private System.Windows.Forms.ListBox lstBoxScore;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button BtnCheck;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblPlayerName;
+        private System.Windows.Forms.Label lblPlayerScore;
+        private System.Windows.Forms.Label lblMessage;
     }
 }
 
