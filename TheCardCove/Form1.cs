@@ -34,6 +34,9 @@ namespace TheCardCove
 
         public void DisplayHighScores()
         {
+            lstBoxName.Items.Clear();
+            lstBoxScore.Items.Clear();
+
             foreach (Highscores s in highScores)
             {
                 lstBoxName.Items.Add(s.Name);
@@ -84,36 +87,29 @@ namespace TheCardCove
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            int lowestScore = highScores[(highScores.Count - 1)].Score;
+
+            if (int.Parse(lblProgress.Text) > lowestScore)
+                {
+                 highScores.Add(new Highscores(txtName.Text, int.Parse(lblProgress.Text)));
+                 }
             SortHighScores();
             SaveHighScores();
-            //FrmDodge FrmDodge2 = new FrmDodge();
-            //Hide();
-            //FrmDodge2.ShowDialog();
-        }
-
-        private void BtnCheck_Click(object sender, EventArgs e)
-        {
-            //FrmDodge FrmDodge2 = new FrmDodge();
-            //Hide();
-            //FrmDodge2.ShowDialog();
-            lblPlayerName.Text = Name.Text;
-            lblPlayerScore.Text = lblScore.Text;
-            int lowest_score = highScores[(highScores.Count - 1)].Score;
-
-            if (int.Parse(lblScore.Text) > lowest_score)
-            {
-                lblMessage.Text = "You have made the Top Ten! Well Done!";
-                highScores.Add(new Highscores(lblPlayerName.Text, int.Parse(lblScore.Text)));
-            }
-            else
-            {
-                lblMessage.Text = "Keep trying to make the top ten!";
-            }
-            SortHighScores();
-            lstBoxName.Items.Clear();
-            lstBoxScore.Items.Clear();
             DisplayHighScores();
+            //FrmDodge FrmDodge2 = new FrmDodge();
+            //Hide();
+            //FrmDodge2.ShowDialog();
         }
+
+//            if (int.Parse(lblScore.Text) > lowest_score)
+//            {
+//                lblMessage.Text = "You have made the Top Ten! Well Done!";
+ //               highScores.Add(new Highscores(lblPlayerName.Text, int.Parse(lblScore.Text)));
+ //           }
+ //           else
+ //           {
+ //               lblMessage.Text = "Keep trying to make the top ten!";
+//            }
 
         public Form1()
         {
@@ -355,6 +351,7 @@ namespace TheCardCove
             lblLiveLoss.Text = ((progress / 5) + 1).ToString();
         }
 
+
         private void mnuStart_Click(object sender, EventArgs e)
         {
             score = 0; //set score to 0
@@ -383,6 +380,7 @@ namespace TheCardCove
             tmrKing.Enabled = false; //disable tmrKing
             tmrProgress.Enabled = false; //disabe tmrProgress
 
+            ReadScores();
             SortHighScores();
             DisplayHighScores();
         }

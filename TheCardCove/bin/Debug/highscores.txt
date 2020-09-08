@@ -6,5 +6,5 @@ Mary,65
 Ken,60
 Addy,50
 Di,40
-Fred,30
-Neville,20
+Fred,15
+Daniel,9
