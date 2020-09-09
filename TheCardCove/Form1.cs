@@ -34,13 +34,13 @@ namespace TheCardCove
 
         public void DisplayHighScores()
         {
-            lstBoxName.Items.Clear();
-            lstBoxScore.Items.Clear();
+            lstBoxName.Items.Clear(); //clear list of names
+            lstBoxScore.Items.Clear(); //clear list of scores
 
             foreach (Highscores s in highScores)
             {
-                lstBoxName.Items.Add(s.Name);
-                lstBoxScore.Items.Add(s.Score);
+                lstBoxName.Items.Add(s.Name); //add list of names
+                lstBoxScore.Items.Add(s.Score); //add list of scores
 
             }
         }
@@ -336,6 +336,16 @@ namespace TheCardCove
                 MessageBox.Show("Game Over, you lasted "+progress+" seconds!");
                 score = 0; //set score to 0
                 lblScore.Text = score.ToString();
+                int lowest_score = highScores[(highScores.Count - 1)].Score;
+
+                if (int.Parse(lblScore.Text) < lowest_score)
+                {
+                    MessageBox.Show("Game Over, you lasted " + progress + " seconds!" + Environment.NewLine + "Keep trying to make the top ten!");
+                }
+                else
+                {
+                    MessageBox.Show("Game Over, you lasted " + progress + " seconds!" + Environment.NewLine + "You have made the Top Ten! Well Done!");
+                }
             }
         }
 

@@ -1,10 +1,10 @@
-Lynda,90
-harry,80
-Nigel,74
-Reginald,70
-Mary,65
-Ken,60
-Addy,50
-Di,40
-Fred,15
-Daniel,9
+Lynda,97
+Whiting,96
+harry,19
+Nigel,17
+Reginald,16
+Ben ,14
+Mary,8
+Ken,6
+Addy,5
+,4
