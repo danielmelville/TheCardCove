@@ -27,6 +27,7 @@ namespace TheCardCove
             angle = 0;
             king = Image.FromFile("king.png");
             spaceRec = new Rectangle(x, y, width, height);
+
         }
         //methods
         public void DrawKing(Graphics g)

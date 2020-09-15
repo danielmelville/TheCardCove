@@ -286,26 +286,32 @@
             // 
             // lstBoxName
             // 
+            this.lstBoxName.Enabled = false;
             this.lstBoxName.FormattingEnabled = true;
             this.lstBoxName.Location = new System.Drawing.Point(646, 225);
             this.lstBoxName.Name = "lstBoxName";
             this.lstBoxName.Size = new System.Drawing.Size(74, 186);
             this.lstBoxName.TabIndex = 15;
+            this.lstBoxName.TabStop = false;
             // 
             // lstBoxScore
             // 
+            this.lstBoxScore.Enabled = false;
             this.lstBoxScore.FormattingEnabled = true;
             this.lstBoxScore.Location = new System.Drawing.Point(728, 225);
             this.lstBoxScore.Name = "lstBoxScore";
             this.lstBoxScore.Size = new System.Drawing.Size(74, 186);
             this.lstBoxScore.TabIndex = 16;
+            this.lstBoxScore.TabStop = false;
             // 
             // btnSave
             // 
+            this.btnSave.Enabled = false;
             this.btnSave.Location = new System.Drawing.Point(679, 449);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(92, 45);
             this.btnSave.TabIndex = 22;
+            this.btnSave.TabStop = false;
             this.btnSave.Text = "Save scores";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);

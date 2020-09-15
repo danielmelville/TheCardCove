@@ -330,10 +330,12 @@ namespace TheCardCove
 
             if (score <= 0)
             {
+                lstBoxName.Enabled = true;
+                lstBoxScore.Enabled = true;
+                btnSave.Enabled = true;
                 tmrCards.Enabled = false; //disable tmrCards
                 tmrKing.Enabled = false; //disable tmrKing
                 tmrProgress.Enabled = false; //disable tmrProgress
-                MessageBox.Show("Game Over, you lasted "+progress+" seconds!");
                 score = 0; //set score to 0
                 lblScore.Text = score.ToString();
                 int lowest_score = highScores[(highScores.Count - 1)].Score;
@@ -361,17 +363,24 @@ namespace TheCardCove
             lblLiveLoss.Text = ((progress / 5) + 1).ToString();
         }
 
-
         private void mnuStart_Click(object sender, EventArgs e)
         {
-            score = 0; //set score to 0
-            lblScore.Text = score.ToString();
-            progress = 0;
-            lblProgress.Text = progress.ToString();
-            score = int.Parse(lblScore.Text);// pass score entered from textbox to score variable
-            tmrCards.Enabled = true; //enable tmrCards
-            tmrKing.Enabled = true; //enable tmrKing
-            tmrProgress.Enabled = true; //enable tmrProgress
+            if (txtName.Text.Equals("")) //if text box is empty
+            {
+                MessageBox.Show("You must enter a name before starting!");
+            }
+            else
+            {
+                score = 0; //set score to 0
+                lblScore.Text = score.ToString();
+                progress = 0;
+                lblProgress.Text = progress.ToString();
+                score = int.Parse(lblScore.Text);// pass score entered from textbox to score variable
+                tmrCards.Enabled = true; //enable tmrCards
+                tmrKing.Enabled = true; //enable tmrKing
+                tmrProgress.Enabled = true; //enable tmrProgress
+                txtName.Enabled = false; //disable textbox
+            }
         }
 
         private void mnuPause_Click_1(object sender, EventArgs e)
