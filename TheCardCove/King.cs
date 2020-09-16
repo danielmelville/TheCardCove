@@ -25,7 +25,7 @@ namespace TheCardCove
             width = 40;
             height = 40;
             angle = 0;
-            king = Image.FromFile("king.png");
+            king = Image.FromFile("Untitled.png");
             spaceRec = new Rectangle(x, y, width, height);
 
         }
@@ -47,12 +47,12 @@ namespace TheCardCove
 
             if (move == "right") //if the user presses the right arrow key
             {
-                angle += 7; //add 7 to "angle"
+                angle += 9; //add 7 to "angle"
                 angle = angle % 360;
             }
             if (move == "left") //if the user presses the right arrow key
             {
-                angle -= 7; //take 7 from "angle"
+                angle -= 9; //take 7 from "angle"
                 if (angle < 0)
                 {
                     angle += 360;

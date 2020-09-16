@@ -392,7 +392,8 @@ namespace TheCardCove
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("instructions display here");
+            MessageBox.Show("Move the arrow keys to rotate and move the king! \n You will gain one point every time a card reaches the end of the gamebboard." +
+                "\n You lose points when you hit a card. \n The cards will get faster as the game goes on! \n Try to last as long as possible without dying to make it into the top 10!");
             //       txtName.Focus();
 
             tmrCards.Enabled = false; //disable tmrCards

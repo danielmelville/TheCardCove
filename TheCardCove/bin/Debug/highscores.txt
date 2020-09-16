@@ -1,5 +1,6 @@
 Lynda,97
 Whiting,96
+amit,69
 Daniel,52
 Danuiel,40
 ,30
@@ -7,4 +8,3 @@ harry,19
 Nigel,17
 Reginald,16
 Ben ,14
-Mary,8
