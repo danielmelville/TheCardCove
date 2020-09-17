@@ -20,16 +20,15 @@ namespace TheCardCove
                     // declare space for an array of 7 objects called Cards 
         Cards[] card = new Cards[16];
 
-        Random yspeed = new Random();
-        Random xspeed = new Random();
-        List<Dice> dice = new List<Dice>();
+        Random yspeed = new Random(); //random variable called yspeed
+        Random xspeed = new Random(); //random variable called xspeed
         King king = new King();
         bool left, right, up, down;
         string move;
-        int score;
-        int progress;
-        string binPath = Application.StartupPath + @"\highscores.txt";
-        List<Highscores> highScores = new List<Highscores>();
+        int score; //integer called score
+        int progress; //integer called progress
+        string binPath = Application.StartupPath + @"\highscores.txt"; //fetch highscores doccument
+        List<Highscores> highScores = new List<Highscores>(); //declear list for highscores
 
 
         public void DisplayHighScores()
@@ -47,8 +46,6 @@ namespace TheCardCove
 
         private void ReadScores()
         {
-            //  lblPlayerName.Text = playerName;
-            // lblPlayerScore.Text = playerScore;
 
             var reader = new StreamReader(binPath);
             // While the reader still has something to read, this code will execute.
@@ -56,7 +53,7 @@ namespace TheCardCove
             {
                 var line = reader.ReadLine();
                 // Split into the name and the score.
-                var values = line.Split(',');
+                var values = line.Split(','); //add a split between 2 lines
                 highScores.Add(new Highscores(values[0], Int32.Parse(values[1])));
             }
             reader.Close();
@@ -65,13 +62,13 @@ namespace TheCardCove
 
         public void SortHighScores()
         {
-            highScores = highScores.OrderByDescending(hs => hs.Score).Take(10).ToList();
+            highScores = highScores.OrderByDescending(hs => hs.Score).Take(10).ToList(); //sort list in decending order
         }
 
         public void SaveHighScores()
         {
             StringBuilder builder = new StringBuilder();
-            foreach (Highscores score in highScores)
+            foreach (Highscores score in highScores) //for each highscore
             {
                 //{0} is for the Name, {1} is for the Score and {2} is for a new line
                 builder.Append(string.Format("{0},{1}{2}", score.Name, score.Score, Environment.NewLine));
@@ -87,29 +84,16 @@ namespace TheCardCove
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            int lowestScore = highScores[(highScores.Count - 1)].Score;
+            int lowestScore = highScores[(highScores.Count - 1)].Score; //integer for lowest score
 
-            if (int.Parse(lblProgress.Text) > lowestScore)
+            if (int.Parse(lblProgress.Text) > lowestScore) //see if user made top 10
                 {
                  highScores.Add(new Highscores(txtName.Text, int.Parse(lblProgress.Text)));
                  }
             SortHighScores();
             SaveHighScores();
             DisplayHighScores();
-            //FrmDodge FrmDodge2 = new FrmDodge();
-            //Hide();
-            //FrmDodge2.ShowDialog();
         }
-
-//            if (int.Parse(lblScore.Text) > lowest_score)
-//            {
-//                lblMessage.Text = "You have made the Top Ten! Well Done!";
- //               highScores.Add(new Highscores(lblPlayerName.Text, int.Parse(lblScore.Text)));
- //           }
- //           else
- //           {
- //               lblMessage.Text = "Keep trying to make the top ten!";
-//            }
 
         public Form1()
         {
@@ -202,22 +186,22 @@ namespace TheCardCove
         {
             if (right) // if right arrow key pressed
             {
-                move = "right";
+                move = "right"; //call "right"
                 king.MoveKing(move);
             }
             if (left) // if left arrow key pressed
             {
-                move = "left";
+                move = "left"; //call "left"
                 king.MoveKing(move);
             }
             if (up)
             {
-                move = "up";
+                move = "up"; //call "up"
                 king.MoveKing(move);
             }
             if (down) // if left arrow key pressed
             {
-                move = "down";
+                move = "down"; //call "down"
                 king.MoveKing(move);
             }
 
@@ -226,44 +210,44 @@ namespace TheCardCove
 
         private void tmrCards_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 4; i++) //for the first 4 cards
             {
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
-                    card[i].y = 25;
+                    card[i].y = 25; //go to y=25
                     score -= ((progress / 5) + 1);// lose a point
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
             }
 
-            for (int i = 5; i < 8; i++)
+            for (int i = 5; i < 8; i++) //for the next 4 cards
             {
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
-                    card[i].y = panel1.Height - 25;
+                    card[i].y = panel1.Height - 25; //go to 25 from the panel hight
                     score -= ((progress / 5) + 1);// lose a point
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
             }
 
-            for (int i = 9; i < 12; i++)
+            for (int i = 9; i < 12; i++) //for the next 4 cards
             {
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
-                    card[i].x = 25;
+                    card[i].x = 25; //go to x=25
                     score -= ((progress/5) + 1);// lose a point/s
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
                 }
             }
 
-            for (int i = 13; i < 16; i++)
+            for (int i = 13; i < 16; i++) //for the finalk 4 cards
             {
                 if (king.spaceRec.IntersectsWith(card[i].CardsRec))
                 {
-                    card[i].x = panel1.Width - 25;
+                    card[i].x = panel1.Width - 25; //go to 25 from the panel width
                     score -= ((progress / 5) + 1);// lose a point
                     lblScore.Text = score.ToString();// display score
                     Checkpoints();
@@ -271,31 +255,31 @@ namespace TheCardCove
             }
 
 
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < 16; i++) //for all cards
 
             {
-                if (card[i].y >= panel1.Height)
+                if (card[i].y >= panel1.Height) //if card gets to the end
                 {
-                    card[i].y = 25;
-                    score += 1;
+                    card[i].y = 25; //reset position
+                    score += 1; //add a point
                     lblScore.Text = score.ToString(); // display number of points
                 }
-                if (card[i].y <= 0)
+                if (card[i].y <= 0) //if card gets to the end
                 {
-                    card[i].y = panel1.Height - 25;
-                    score += 1;
+                    card[i].y = panel1.Height - 25; //reset position
+                    score += 1; //add a point
                     lblScore.Text = score.ToString(); // display number of points
                 }
-                if (card[i].x >= panel1.Width)
+                if (card[i].x >= panel1.Width) //if card gets to the end
                 {
-                    card[i].x = 25;
-                    score += 1;
+                    card[i].x = 25; //reset position
+                    score += 1; //add a point
                     lblScore.Text = score.ToString(); // display number of points
                 }
-                if (card[i].x <= 0)
+                if (card[i].x <= 0) //if card gets to the end
                 {
-                    card[i].x = panel1.Width - 25;
-                    score += 1;
+                    card[i].x = panel1.Width - 25; //reset position
+                    score += 1; //add a point
                     lblScore.Text = score.ToString(); // display number of points
                 }
 
@@ -305,34 +289,30 @@ namespace TheCardCove
         }
 
 
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        private void Form1_KeyDown(object sender, KeyEventArgs e) //for when keys are pressed
         {
-            if (e.KeyData == Keys.Left) { left = true; }
-            if (e.KeyData == Keys.Right) { right = true; }
-            if (e.KeyData == Keys.Up) { up = true; }
-            if (e.KeyData == Keys.Down) { down = true; }
-            if (e.KeyData == Keys.Space)
-            {
-                dice.Add(new Dice(king.spaceRec, king.angle));
-            }
+            if (e.KeyData == Keys.Left) { left = true; } //make "left" true when left key is pressed
+            if (e.KeyData == Keys.Right) { right = true; } //make "right" true when right key is pressed
+            if (e.KeyData == Keys.Up) { up = true; } //make "up" true when up key is pressed
+            if (e.KeyData == Keys.Down) { down = true; } //make "down" true when down key is pressed
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.Left) { left = false; }
-            if (e.KeyData == Keys.Right) { right = false; }
-            if (e.KeyData == Keys.Up) { up = false; }
-            if (e.KeyData == Keys.Down) { down = false; }
+            if (e.KeyData == Keys.Left) { left = false; } //make "left" false when left key is released
+            if (e.KeyData == Keys.Right) { right = false; } //make "right" false when right key is released
+            if (e.KeyData == Keys.Up) { up = false; } //make "up" false when up key is released
+            if (e.KeyData == Keys.Down) { down = false; } //make "down" false when down key is released
         }
 
-        private void Checkpoints()
+        private void Checkpoints() //call method "Checkponits"
         {
 
-            if (score <= 0)
+            if (score <= 0) //if score goes below 0
             {
-                lstBoxName.Enabled = true;
-                lstBoxScore.Enabled = true;
-                btnSave.Enabled = true;
+                lstBoxName.Enabled = true; //enable high score names
+                lstBoxScore.Enabled = true; //enable high scores
+                btnSave.Enabled = true; //enable save button
                 tmrCards.Enabled = false; //disable tmrCards
                 tmrKing.Enabled = false; //disable tmrKing
                 tmrProgress.Enabled = false; //disable tmrProgress
@@ -340,13 +320,13 @@ namespace TheCardCove
                 lblScore.Text = score.ToString();
                 int lowest_score = highScores[(highScores.Count - 1)].Score;
 
-                if (int.Parse(lblScore.Text) < lowest_score)
+                if (int.Parse(lblScore.Text) < lowest_score) //if player makes top 10
                 {
-                    MessageBox.Show("Game Over, you lasted " + progress + " seconds!" + Environment.NewLine + "Keep trying to make the top ten!");
+                    MessageBox.Show("Game Over, you lasted " + progress + " seconds!" + Environment.NewLine + "You have made the Top Ten! Well Done!"); //show messsage                  
                 }
-                else
+                else //if not
                 {
-                    MessageBox.Show("Game Over, you lasted " + progress + " seconds!" + Environment.NewLine + "You have made the Top Ten! Well Done!");
+                    MessageBox.Show("Game Over, you lasted " + progress + " seconds!" + Environment.NewLine + "Keep trying to make the top ten!"); //show messsage
                 }
             }
         }
@@ -358,7 +338,7 @@ namespace TheCardCove
 
         private void tmrProgress_Tick(object sender, EventArgs e)
         {
-            progress += 1;
+            progress += 1; //add a point
             lblProgress.Text = progress.ToString();
             lblLiveLoss.Text = ((progress / 5) + 1).ToString();
         }
@@ -394,7 +374,7 @@ namespace TheCardCove
         {
             MessageBox.Show("Move the arrow keys to rotate and move the king! \n You will gain one point every time a card reaches the end of the gamebboard." +
                 "\n You lose points when you hit a card. \n The cards will get faster as the game goes on! \n Try to last as long as possible without dying to make it into the top 10!");
-            //       txtName.Focus();
+            //display instructions
 
             tmrCards.Enabled = false; //disable tmrCards
             tmrKing.Enabled = false; //disable tmrKing

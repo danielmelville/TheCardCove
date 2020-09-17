@@ -11,10 +11,9 @@ namespace TheCardCove
         //we create a Constructor with 2 overloads, 1 for the player's name and one for their score
         public Highscores(string name, int progress)
         {
-            Name = name;
-            Score = progress;
+            Name = name; //set name
+            Score = progress; //set score(/time)
         }
-
         //set properties so we can access the name and score
         public string Name { get; set; }
         public int Score { get; set; }
