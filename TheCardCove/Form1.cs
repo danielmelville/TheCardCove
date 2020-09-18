@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Text.RegularExpressions;
+
 
 namespace TheCardCove
 {
@@ -333,7 +335,28 @@ namespace TheCardCove
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            string context = txtName.Text;
+            bool isletter = true;
+            //for loop checks for numbers as characters are entered
+            for (int i = 0; i < context.Length; i++)
+            {
+                if (!char.IsLetter(context[i]))//if current character not a letter
+                {
+                    isletter = false;//make isletter false
+                    break;//exit the for loop
+                }
+            }
 
+            //if not a number clear the textbox and focus on it to enter lives again
+            if (isletter == false)
+            {
+                txtName.Clear();
+                txtName.Focus();
+                DialogResult result1 = MessageBox.Show("Please only enter letters for your name.",
+            "Warning",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
+            }
         }
 
         private void tmrProgress_Tick(object sender, EventArgs e)
@@ -347,7 +370,7 @@ namespace TheCardCove
         {
             if (txtName.Text.Equals("")) //if text box is empty
             {
-                MessageBox.Show("You must enter a name before starting!");
+                MessageBox.Show("You must enter a name with only letters before starting!");
             }
             else
             {
@@ -361,6 +384,8 @@ namespace TheCardCove
                 tmrProgress.Enabled = true; //enable tmrProgress
                 txtName.Enabled = false; //disable textbox
             }
+
+
         }
 
         private void mnuPause_Click_1(object sender, EventArgs e)
